@@ -1,0 +1,27 @@
+.addtodo-wrapper form {
+  padding: var(--padding);
+  background: var(--bg);
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.addtodo-wrapper form input {
+  padding: var(--padding);
+  border: 0;
+}
+.addtodo-wrapper form button[type='submit'] {
+  margin-left: 0.2rem;
+  font-size: calc(var(--fs) - 2px);
+  padding: 0.4rem;
+  border: none;
+  border-radius: var(--border-r);
+  transition: var(--transition);
+  background: rgb(69, 58, 143);
+  color: white;
+}
+.addtodo-wrapper form button[type='submit']:hover {
+  cursor: pointer;
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.5);
+}
