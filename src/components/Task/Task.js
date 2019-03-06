@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
-import './tasks.scss';
+import './styles.scss';
 
 class Task extends Component {
 
@@ -34,7 +34,7 @@ class Task extends Component {
     e.preventDefault();
     const { id, listId, removeTask } = this.props;
 
-    removeTask(id, listId)
+    removeTask(id, listId);
   };
   render() {
 

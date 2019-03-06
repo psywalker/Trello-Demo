@@ -1,7 +1,7 @@
-import { connect } from 'react-redux'
-import BoardsList from '../components/BoardsList/BoardsList'
-import { removeList } from '../actions'
-import { addTask } from '../actions'
+import { connect } from 'react-redux';
+import BoardsList from '../components/BoardsList/BoardsList';
+import { removeList } from '../actions';
+import { addTask } from '../actions';
 
 const mapStateToProps = (state, ownProps) => 
 {
@@ -15,18 +15,18 @@ const mapStateToProps = (state, ownProps) =>
     const tasksArr = state.tasks;
     const tasks = listsIds.map(id => {
         for(let i = 0; i < tasksArr.length; i++) {
-            if(id === tasksArr[i].id) return tasksArr[i]
+            if(id === tasksArr[i].id) return tasksArr[i];
         }
         return false;
     })
 
-    return { tasks, name, listId }
+    return { tasks, name, listId };
     
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
     removeList: id => dispatch(removeList(id)),
-    addTask: (id, text) => dispatch(addTask(id, text))
+    addTask: (id, text) => dispatch(addTask(id, text)),
 })
 
 export default connect(

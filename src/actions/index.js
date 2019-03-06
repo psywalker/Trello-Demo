@@ -3,7 +3,7 @@ let nextListId = 3
 export const addList = text => ({
   type: 'ADD_LIST',
   id: nextListId++,
-  text
+  text,
 })
 
 export const removeList = id => ({
@@ -14,11 +14,11 @@ export const removeList = id => ({
 export const addTask = (id, text) => ({
   type: 'ADD_TASK',
   listId: id,
-  text
+  text,
 })
 
 export const removeTask = (taskId, listId) => ({
   type: 'REMOVE_TASK',
   taskId,
-  listId
+  listId,
 })

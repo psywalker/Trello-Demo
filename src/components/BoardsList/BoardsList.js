@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
-import TaskContainer from '../../containers/TaskContainer'
-import './board.scss';
-import '../Task/tasks.scss';
+import TaskContainer from '../../containers/TaskContainer';
+import './styles.scss';
+import '../Task/styles.scss';
 
 class BoardsList extends Component {
 
@@ -15,7 +15,7 @@ class BoardsList extends Component {
     } 
     componentDidUpdate() {
         if (!this.addTaskTextArea) return;
-        this.addTaskTextArea.focus()
+        this.addTaskTextArea.focus();
     }
     boardMenuHide = () => {
         this.setState({ boardMenuShow: false });

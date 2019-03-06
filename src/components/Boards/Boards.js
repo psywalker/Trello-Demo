@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import BoardsListContainer from '../../containers/BoardsListContainer'
-import './boards-wrapper.scss';
+import BoardsListContainer from '../../containers/BoardsListContainer';
+import './styles.scss';
 
 class Boards extends Component {
 
@@ -13,7 +13,7 @@ class Boards extends Component {
   } 
   componentDidUpdate() {
     if (!this.inputTitle) return;
-    this.inputTitle.focus()
+    this.inputTitle.focus();
   }
 
   openFormAddList = (e) => {
@@ -49,7 +49,6 @@ class Boards extends Component {
             <button className="board-adding-form__btn_close" onClick={this.openFormAddList}>✖</button>
           </form>)}
         </div>
-  
       </div>
     );
   }

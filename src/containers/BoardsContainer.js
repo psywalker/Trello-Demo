@@ -1,14 +1,14 @@
-import { connect } from 'react-redux'
-import Boards from '../components/Boards/Boards'
-import { addList } from '../actions'
+import { connect } from 'react-redux';
+import Boards from '../components/Boards/Boards';
+import { addList } from '../actions';
 
-const mapStateToProps = (state, ownProps) => 
+const mapStateToProps = (state) => 
 {
-  return { lists: state.lists }
+  return { lists: state.lists };
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  addList: text => dispatch(addList(text))
+const mapDispatchToProps = (dispatch) => ({
+  addList: text => dispatch(addList(text)),
 })
 
 export default connect(

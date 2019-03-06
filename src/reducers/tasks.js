@@ -11,7 +11,7 @@ const tasks = (state = [], action) => {
         ];
       case 'REMOVE_TASK':
         return state.filter(
-            task => task.id !== action.taskId 
+            task => task.id !== action.taskId
         );
       default:
         return state;

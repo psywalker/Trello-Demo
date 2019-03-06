@@ -3,7 +3,7 @@ import { LastLocationProvider } from 'react-router-last-location';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Task from '../components/Task/Task';
 import BoardsContainer from '../containers/BoardsContainer';
-import '../styles/app-styles.scss';
+import './styles.scss';
 
 const Main = () => (
     <BrowserRouter basename={process.env.PUBLIC_URL || '/'}>
