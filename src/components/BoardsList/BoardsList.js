@@ -12,10 +12,13 @@ class BoardsList extends Component {
       boardMenuShow: false,
       addTaskFormShow: false,
     }
+
+    this.addTaskTextArea = React.createRef();
+
   }
   componentDidUpdate() {
-    if (!this.addTaskTextArea) return;
-    this.addTaskTextArea.focus();
+    if (!this.addTaskTextArea.current) return;
+    this.addTaskTextArea.current.focus();
   }
   boardMenuHide = () => {
     this.setState({ boardMenuShow: false });
@@ -41,7 +44,7 @@ class BoardsList extends Component {
 
     if (e.key === 'Enter') {
       e.preventDefault();
-      addTask(listId, this.addTaskTextArea.value);
+      addTask(listId, this.addTaskTextArea.current.value);
       this.setState({ addTaskFormShow: false });
     }
   };
@@ -139,7 +142,7 @@ class BoardsList extends Component {
               <form action="#" className="task-adding-form">
                 <textarea 
                   onKeyPress={this.handleKeyPressAddTask} 
-                  ref={el => this.addTaskTextArea = el} 
+                  ref={this.addTaskTextArea} 
                   className="task-adding-form__input" 
                   placeholder="Ввести заголовок для этой карточки"
                 />

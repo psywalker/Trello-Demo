@@ -9,11 +9,11 @@ class Boards extends Component {
     this.state = {
       addListForm: false,
     }
-    
+    this.listTitleInput = React.createRef();
   } 
   componentDidUpdate() {
-    if (!this.inputTitle) return;
-    this.inputTitle.focus();
+    if (!this.listTitleInput.current) return;
+    this.listTitleInput.current.focus();
   }
 
   openFormAddList = (e) => {
@@ -27,7 +27,7 @@ class Boards extends Component {
 
   handleAddList = (e) => {
     const { addList } = this.props;
-    addList(this.inputTitle.value);
+    addList(this.listTitleInput.current.value);
     this.openFormAddList(e);
   }  
 
@@ -60,7 +60,7 @@ class Boards extends Component {
           {addListForm && (
             <form className="board-adding-form">
               <input 
-                ref={el => this.inputTitle = el} 
+                ref={this.listTitleInput} 
                 className="board-adding-form__input" 
                 placeholder="Ввести заголовок списка" 
               />

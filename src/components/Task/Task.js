@@ -9,13 +9,18 @@ class Task extends Component {
     this.state = {
       taskEditBtnShow: false,
     }
+
+    this.taskContainer = React.createRef();
+    this.taskMenuWrapper = React.createRef();
+    this.taskMenuTextArea = React.createRef();
+    
   } 
 
   componentDidUpdate() {
-    if (!this.taskTextArea && !this.taskMenuWrapper) return;
-    this.taskTextArea.focus();
-    const top = this.taskRef.getBoundingClientRect().y;
-    this.taskMenuWrapper.style.top = top + 'px';
+    if (!this.taskMenuTextArea.current && !this.taskMenuWrapper.current) return;
+    this.taskMenuTextArea.current.focus();
+    const top = this.taskContainer.current.getBoundingClientRect().y;
+    this.taskMenuWrapper.current.style.top = top + 'px';
   }
   taskMenuHide = () => {
     this.setState({ taskEditBtnShow: false });
@@ -42,7 +47,7 @@ class Task extends Component {
     const { id, text } = this.props;
     const { taskEditBtnShow } = this.state;
     return (
-      <div className="task" ref={el => this.taskRef = el}>
+      <div className="task" ref={this.taskContainer}>
         <button 
           className={'task__edit-btn ' + (taskEditBtnShow ? 'task__edit-btn_show' : '')} 
           onClick={this.taskMenuToggle}
@@ -61,7 +66,7 @@ class Task extends Component {
           {taskEditBtnShow && (
             <div 
               className="task-menu-wrapper" 
-              ref={el => this.taskMenuWrapper = el}
+              ref={this.taskMenuWrapper}
             >
 
               <div 
@@ -74,7 +79,7 @@ class Task extends Component {
                 <form action="#" className="task-menu-fields">
                   <textarea 
                     className="task-menu-fields__textarea" 
-                    ref={el => this.taskTextArea = el} 
+                    ref={this.taskMenuTextArea} 
                   />
                   <button 
                     className="task-menu-fields__btn" 
