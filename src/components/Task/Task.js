@@ -46,14 +46,17 @@ class Task extends Component {
 
     const { id, text } = this.props;
     const { taskEditBtnShow } = this.state;
+
+    let isTaskEditBtnShow = taskEditBtnShow ? 'task__edit-btn task__edit-btn_show' : 'task__edit-btn ';
+
     return (
       <div className="task" ref={this.taskContainer}>
         <button 
-          className={'task__edit-btn ' + (taskEditBtnShow ? 'task__edit-btn_show' : '')} 
+          className={isTaskEditBtnShow} 
           onClick={this.taskMenuToggle}
         >
           <span>
-            <i className="fas fa-pen"></i>
+            <i className="fas fa-pen" />
           </span>
         </button>
         
@@ -92,12 +95,11 @@ class Task extends Component {
                 <ul className="task-menu">
                   <li className="task-menu__item">
                     <button className="task-menu__btn" onClick={this.handleRemoveTask}>
-                      <i className="far fa-file-archive"></i>
+                      <i className="far fa-file-archive" />
                       Архивировать
                     </button>
                   </li>
                 </ul>
-
               </div>
             </div>
           )}

@@ -70,6 +70,7 @@ class BoardsList extends Component {
     } = this.props;
 
     const { boardMenuShow, addTaskFormShow } = this.state;
+    let boardMenuShowOpen = boardMenuShow ? 'board__menu-toggle board__menu-toggle_open' : 'board__menu-toggle ';
 
     return (
       <div className="board boards__item">
@@ -78,7 +79,7 @@ class BoardsList extends Component {
           onClickOutside={this.boardMenuHide}
         >
           <button 
-            className={'board__menu-toggle ' + (boardMenuShow ? 'board__menu-toggle_open' : '')} 
+            className={boardMenuShowOpen} 
             onClick={this.boardMenuToggle}
           >
             <span>...</span>
