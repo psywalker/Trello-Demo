@@ -6,15 +6,15 @@ import BoardsContainer from '../containers/BoardsContainer';
 import './styles.scss';
 
 const Main = () => (
-    <BrowserRouter basename={process.env.PUBLIC_URL || '/'}>
-        <LastLocationProvider>
-            <div>
-                <Switch>
-                    <Route path="/" exact component={BoardsContainer}/>
-                    <Route path="/task" component={Task}/>
-                </Switch>
-            </div>
-        </LastLocationProvider>
-    </BrowserRouter>)
+	<BrowserRouter basename={process.env.PUBLIC_URL || '/'}>
+		<LastLocationProvider>
+			<div>
+				<Switch>
+					<Route path="/" exact component={BoardsContainer} />
+					<Route path="/task" component={Task} />
+				</Switch>
+			</div>
+		</LastLocationProvider>
+	</BrowserRouter>)
 
-    export default Main;
+export default Main;

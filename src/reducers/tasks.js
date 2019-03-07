@@ -1,4 +1,5 @@
 let counterTaskId = 6;
+
 const tasks = (state = [], action) => {
     switch (action.type) {
       case 'ADD_TASK':
