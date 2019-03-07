@@ -25,9 +25,15 @@ class Boards extends Component {
     return false;
   }
 
+  handleAddList = (e) => {
+    const { addList } = this.props;
+    addList(this.inputTitle.value);
+    this.openFormAddList(e);
+  }  
+
   render() {
 
-    const { lists, addList } = this.props;
+    const { lists } = this.props;
     const { addListForm } = this.state;
 
     return (
@@ -60,10 +66,7 @@ class Boards extends Component {
               />
               <button 
                 className="board-adding-form__btn_add" 
-                onClick={(e) => {
-                  addList(this.inputTitle.value);
-                  this.openFormAddList(e);
-                }}
+                onClick={this.handleAddList}
               >
                 Добавьте список
               </button>

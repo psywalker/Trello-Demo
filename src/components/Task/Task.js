@@ -35,6 +35,7 @@ class Task extends Component {
     const { id, listId, removeTask } = this.props;
 
     removeTask(id, listId);
+    this.taskMenuHide();
   };
   render() {
 
@@ -71,16 +72,21 @@ class Task extends Component {
               <div className="task-menu-wrapper__inner">
 
                 <form action="#" className="task-menu-fields">
-                  <textarea className="task-menu-fields__textarea" ref={el => this.taskTextArea = el}></textarea>
-                  <button className="task-menu-fields__btn" onClick={this.handleEditTask}>Сохранить</button>
+                  <textarea 
+                    className="task-menu-fields__textarea" 
+                    ref={el => this.taskTextArea = el} 
+                  />
+                  <button 
+                    className="task-menu-fields__btn" 
+                    onClick={this.handleEditTask}
+                  >
+                    Сохранить
+                  </button>
                 </form>
 
                 <ul className="task-menu">
                   <li className="task-menu__item">
-                    <button className="task-menu__btn" onClick={(e) => {
-                        this.handleRemoveTask(e);
-                        this.taskMenuHide();
-                      }}>
+                    <button className="task-menu__btn" onClick={this.handleRemoveTask}>
                       <i className="far fa-file-archive"></i>
                       Архивировать
                     </button>

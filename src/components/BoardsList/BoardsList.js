@@ -46,14 +46,24 @@ class BoardsList extends Component {
     }
   };
 
+  handleRemoveList = (e) => {
+    const {listId, removeList } = this.props;
+    e.preventDefault();
+    removeList(listId);
+  }
+
+  handleAddTask = (e) => {
+    const {listId, addTask } = this.props;
+    this.addTaskFormHide(e);
+    addTask(listId, this.addTaskTextArea.value);
+  }
+
   render() {
 
     const {
       name,
       tasks,
-      removeList,
       listId,
-      addTask
     } = this.props;
 
     const { boardMenuShow, addTaskFormShow } = this.state;
@@ -86,10 +96,7 @@ class BoardsList extends Component {
                   <button 
                     type="button" 
                     className="board-menu__link" 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      removeList(listId);
-                    }}
+                    onClick={this.handleRemoveList}
                   >
                     Архивировать список
                   </button>
@@ -102,9 +109,9 @@ class BoardsList extends Component {
 
         <div className="tasks tasks-wrapper">
           <div className="tasks-wrapper__inner">
-            {tasks.map((task, i) => {
+            {tasks.map(task => {
               return <TaskContainer 
-                key={i} 
+                key={task.id} 
                 text={task.text} 
                 id={task.id} 
                 listId={listId} 
@@ -138,10 +145,7 @@ class BoardsList extends Component {
                 />
                 <button 
                   className="task-adding-form__btn_add" 
-                  onClick={(e) => {
-                    this.addTaskFormHide(e);
-                    addTask(listId, this.addTaskTextArea.value);
-                  }} 
+                  onClick={this.handleAddTask} 
                 >
                   Добавьте карточку
                 </button>
