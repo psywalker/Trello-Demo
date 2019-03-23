@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BoardsListContainer from '../BoardsListContainer/BoardsListContainer';
+import BoardList from '../BoardList/BoardList';
 import { addList } from '../../actions';
 import './styles.scss';
 
-class Boards extends Component {
+class Board extends Component {
 
   constructor(props) {
     super(props);
@@ -43,7 +43,7 @@ class Boards extends Component {
 
         <div className="boards"> 
           {lists.map(list =>
-            <BoardsListContainer 
+            <BoardList
               listId={list.id} 
               key={list.id} 
             />
@@ -99,4 +99,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Boards)
+)(Board)

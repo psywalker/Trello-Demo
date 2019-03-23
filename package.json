@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-click-outside": "github:tj/react-click-outside",
@@ -11,7 +12,7 @@
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "react-router-last-location": "^2.0.0-beta.1",
-    "react-scripts": "2.1.5",
+    "react-scripts": "^2.1.8",
     "redux": "^4.0.1"
   },
   "scripts": {

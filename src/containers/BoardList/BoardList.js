@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
 import { connect } from 'react-redux';
-import TaskContainer from '../../containers/TaskContainer/TaskContainer';
+import Task from '../Task/Task';
 import { removeList } from '../../actions';
 import { addTask } from '../../actions';
 import './styles.scss';
-import '../TaskContainer/styles.scss';
+import '../Task/styles.scss';
 
-class BoardsList extends Component {
+class Board extends Component {
 
   constructor(props) {
     super(props);
@@ -117,7 +117,7 @@ class BoardsList extends Component {
         <div className="tasks tasks-wrapper">
           <div className="tasks-wrapper__inner">
             {tasks.map(task => {
-              return <TaskContainer 
+              return <Task 
                 key={task.id} 
                 text={task.text} 
                 id={task.id} 
@@ -200,4 +200,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BoardsList)
+)(Board)

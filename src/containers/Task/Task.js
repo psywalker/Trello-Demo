@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { removeTask } from '../../actions';
 import './styles.scss';
@@ -114,10 +115,12 @@ class Task extends Component {
 
 const mapStateToProps = (state, ownProps) => 
 {
+  const taskId = _.get(ownProps, ['match', 'params', 'id']) || ownProps.id;
+  const taskText = _.get(state, ['tasks', `${taskId-1}`, 'text']);
+
   return { 
-    id: ownProps.id, 
-    text: ownProps.text, 
-    listId: ownProps.listId,
+    id: taskId, 
+    text: taskText
   };
     
 }

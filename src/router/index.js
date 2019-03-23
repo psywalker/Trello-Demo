@@ -1,8 +1,9 @@
 import React from 'react';
 import { LastLocationProvider } from 'react-router-last-location';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import TaskContainer from '../containers/TaskContainer/TaskContainer';
-import BoardsContainer from '../containers/BoardsContainer/BoardsContainer';
+import Task from '../containers/Task/Task';
+import Board from '../containers/Board/Board';
+import Page404 from '../components/Page404/Page404';
 import './styles.scss';
 
 const Main = () => (
@@ -10,8 +11,9 @@ const Main = () => (
 		<LastLocationProvider>
 			<div>
 				<Switch>
-					<Route path="/" exact component={BoardsContainer} />
-					<Route path="/task" component={TaskContainer} />
+					<Route path="/" exact component={Board} />
+					<Route path="/task/:id" component={Task} />
+					<Route path="*" component={Page404} />
 				</Switch>
 			</div>
 		</LastLocationProvider>
