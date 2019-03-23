@@ -1,8 +1,8 @@
 import React from 'react';
 import { LastLocationProvider } from 'react-router-last-location';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import Task from '../components/Task/Task';
-import BoardsContainer from '../containers/BoardsContainer';
+import TaskContainer from '../containers/TaskContainer/TaskContainer';
+import BoardsContainer from '../containers/BoardsContainer/BoardsContainer';
 import './styles.scss';
 
 const Main = () => (
@@ -11,7 +11,7 @@ const Main = () => (
 			<div>
 				<Switch>
 					<Route path="/" exact component={BoardsContainer} />
-					<Route path="/task" component={Task} />
+					<Route path="/task" component={TaskContainer} />
 				</Switch>
 			</div>
 		</LastLocationProvider>
