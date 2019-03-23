@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
+import { connect } from 'react-redux';
+import { removeTask } from '../../actions';
 import './styles.scss';
 
 class Task extends Component {
@@ -109,4 +111,22 @@ class Task extends Component {
   }
 }
 
-export default Task;
+
+const mapStateToProps = (state, ownProps) => 
+{
+  return { 
+    id: ownProps.id, 
+    text: ownProps.text, 
+    listId: ownProps.listId,
+  };
+    
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  removeTask: (taskId, listId) => dispatch(removeTask(taskId, listId)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Task)
