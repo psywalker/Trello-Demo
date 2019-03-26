@@ -135,8 +135,8 @@ const mapStateToProps = (state, ownProps) =>
     
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  removeTask: (taskId, listId) => dispatch(removeTask(taskId, listId)),
+const mapDispatchToProps = ({
+  removeTask,
 })
 
 export default connect(

@@ -8,3 +8,4 @@ const BoardsObj = combineReducers({
 });
 
 export default BoardsObj;
+

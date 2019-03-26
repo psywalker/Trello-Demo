@@ -66,7 +66,7 @@ class BoardList extends Component {
   handleAddTask = (e) => {
     const {listId, addTask } = this.props;
     this.addTaskFormHide(e);
-    addTask(listId, this.addTaskTextArea.value);
+    addTask(listId, this.addTaskTextArea.current.value);
   }
 
   render() {
@@ -122,11 +122,11 @@ class BoardList extends Component {
 
         <div className="tasks tasks-wrapper">
           <div className="tasks-wrapper__inner">
-            {tasks.map(task => {
+            {tasks.map(({id, text}) => {
               return <Task 
-                key={task.id} 
-                text={task.text} 
-                id={task.id} 
+                key={id} 
+                text={text} 
+                id={id} 
                 listId={listId} 
               />
             })}
@@ -144,7 +144,9 @@ class BoardList extends Component {
                 className={getBtnClasses('link')}
                 onClick={this.addTaskFormToggle}
               >
-                <span className="button__text">Добавьте ещё одну карточку</span>
+                <span className="button__text">
+                  Добавьте ещё одну карточку
+                </span>
               </Button>
             )}
 
@@ -201,12 +203,13 @@ const mapStateToProps = (state, ownProps) =>
     
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  removeList: id => dispatch(removeList(id)),
-  addTask: (id, text) => dispatch(addTask(id, text)),
+const mapDispatchToProps = ({
+  removeList,
+  addTask,
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(BoardList)
+

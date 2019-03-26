@@ -35,4 +35,4 @@ const initialStore = {
   ]
 }
 
-export default initialStore
+export default initialStore;
