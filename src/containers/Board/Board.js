@@ -44,7 +44,7 @@ class Board extends Component {
       <div className="boards-wrapper">
 
         <div className="boards"> 
-          {lists.map(list =>
+          {lists.map((list) =>
             <BoardList
               listId={list.id} 
               key={list.id} 
@@ -54,7 +54,7 @@ class Board extends Component {
     
         <div className="board-adding">
           {!addListForm && (
-            <Button handleClick={this.openFormAddList}>
+            <Button onClick={this.openFormAddList}>
               + Добавьте ещё одну колонку
             </Button>
           )}
@@ -66,15 +66,15 @@ class Board extends Component {
                 placeholder="Ввести заголовок списка" 
               />
               <Button 
-                handleClick={this.handleAddList}
-                classes={getBtnClasses('primary')}
+                onClick={this.handleAddList}
+                className={getBtnClasses('primary')}
               >
                 Добавьте список
               </Button>
 
               <Button 
-                classes={getBtnClasses('close')}
-                handleClick={this.openFormAddList}
+                className={getBtnClasses('close')}
+                onClick={this.openFormAddList}
               >
                 ✖
               </Button>

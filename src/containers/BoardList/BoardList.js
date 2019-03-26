@@ -85,16 +85,16 @@ class BoardList extends Component {
           onClickOutside={this.boardMenuHide}
         >
           <Button 
-            classes={getBtnClasses('ellipsis')}
-            handleClick={this.boardMenuToggle}
+            className={getBtnClasses('ellipsis')}
+            onClick={this.boardMenuToggle}
           />
 
           {boardMenuShow && (
             <div className="board-menu-wrapper">
               <Button 
                 type="button" 
-                classes={getBtnClasses('close')}
-                handleClick={this.boardMenuToggle}
+                className={getBtnClasses('close')}
+                onClick={this.boardMenuToggle}
               >
                 ✖
               </Button>
@@ -103,8 +103,8 @@ class BoardList extends Component {
                 <li className="board-menu__item">
                   <Button 
                     type="button"
-                    classes={getBtnClasses('long')}
-                    handleClick={this.handleRemoveList}
+                    className={getBtnClasses('long')}
+                    onClick={this.handleRemoveList}
                   >
                     Архивировать список
                   </Button>
@@ -115,8 +115,7 @@ class BoardList extends Component {
         </ClickOutside>
         <Title 
           level="h3"
-          classes={getTitleClasses('middle')}
-          handleClick={()=> {}}
+          className={getTitleClasses('middle')}
         >
           {name}
         </Title>
@@ -142,8 +141,8 @@ class BoardList extends Component {
             {!addTaskFormShow && (
               <Button 
                 type="button"
-                classes={getBtnClasses('link')}
-                handleClick={this.addTaskFormToggle}
+                className={getBtnClasses('link')}
+                onClick={this.addTaskFormToggle}
               >
                 <span className="button__text">Добавьте ещё одну карточку</span>
               </Button>
@@ -160,15 +159,15 @@ class BoardList extends Component {
 
                 <Button 
                   type="button" 
-                  classes={getBtnClasses('primary')}
-                  handleClick={this.handleAddTask}
+                  className={getBtnClasses('primary')}
+                  onClick={this.handleAddTask}
                 >
                   Добавьте карточку
                 </Button>
                 <Button 
                   type="button" 
-                  classes={getBtnClasses('close')}
-                  handleClick={this.addTaskFormToggle}
+                  className={getBtnClasses('close')}
+                  onClick={this.addTaskFormToggle}
                 >
                   ✖
                 </Button>

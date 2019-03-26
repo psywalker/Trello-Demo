@@ -59,15 +59,14 @@ class Task extends Component {
       <div className="task" ref={this.taskContainer}>
         <Button 
           type="button" 
-          classes={getBtnClasses('visible')}
-          handleClick={this.taskMenuToggle}
+          className={getBtnClasses('visible')}
+          onClick={this.taskMenuToggle}
         >
           <i className="fas fa-pen" />
         </Button>
         <Title 
           level="h3"
           classes={getTitleClasses('middle')}
-          handleClick={()=> {}}
         >
           {id}: {text}
         </Title>
@@ -89,18 +88,14 @@ class Task extends Component {
               <div className="task-menu-wrapper__inner">
 
                 <form action="#" className="task-menu-fields">
-                  <textarea 
-                    className="task-menu-fields__textarea" 
-                    ref={this.taskMenuTextArea} 
-                  />
                   <TextArea 
                     className="task-menu-fields__textarea" 
                     ref={this.taskMenuTextArea} 
                   />
                   <Button 
                     type="button" 
-                    classes={getBtnClasses('primary')}
-                    handleClick={this.handleEditTask}
+                    className={getBtnClasses('primary')}
+                    onClick={this.handleEditTask}
                   >
                     Сохранить
                   </Button>
@@ -110,8 +105,8 @@ class Task extends Component {
                   <li className="task-menu__item">
                     <Button 
                       type="button" 
-                      classes={getBtnClasses('dark')}
-                      handleClick={this.handleRemoveTask}
+                      className={getBtnClasses('dark')}
+                      onClick={this.handleRemoveTask}
                     >
                       <i className="far fa-file-archive button__icon" />
                       Архивировать
