@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BoardList from '../BoardList/BoardList';
+import Button from '../../UI/Button/Button';
 import { addList } from '../../actions';
+import { getBtnClasses } from '../../selectors/getBtnClasses';
 import './styles.scss';
 
 class Board extends Component {
@@ -52,12 +54,9 @@ class Board extends Component {
     
         <div className="board-adding">
           {!addListForm && (
-            <button 
-              className="board-adding__btn" 
-              onClick={this.openFormAddList}
-            >
+            <Button handleClick={this.openFormAddList}>
               + Добавьте ещё одну колонку
-            </button>
+            </Button>
           )}
           {addListForm && (
             <form className="board-adding-form">
@@ -66,18 +65,19 @@ class Board extends Component {
                 className="board-adding-form__input" 
                 placeholder="Ввести заголовок списка" 
               />
-              <button 
-                className="board-adding-form__btn_add" 
-                onClick={this.handleAddList}
+              <Button 
+                handleClick={this.handleAddList}
+                classes={getBtnClasses('primary')}
               >
                 Добавьте список
-              </button>
-              <button 
-                className="board-adding-form__btn_close" 
-                onClick={this.openFormAddList}
+              </Button>
+
+              <Button 
+                classes={getBtnClasses('close')}
+                handleClick={this.openFormAddList}
               >
                 ✖
-              </button>
+              </Button>
             </form>
           )}
         </div>

@@ -62,47 +62,4 @@
     line-height: 20px;
     padding: 8px 12px;
   }
-
-  &__btn_add {
-    background-color: #5aac44;
-    box-shadow: 0 1px 0 0 #3f6f21;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    min-height: 30px;
-    height: 30px;
-    margin-top: 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 700;
-    line-height: 20px;
-    margin: 8px 4px 0 0;
-    padding: 6px 12px;
-    text-align: center;
-    &:hover {
-      background-color: #519839;
-      box-shadow: 0 1px 0 0 #3f6f21;
-      border: none;
-      color: #fff;
-    }
-  }
-
-  &__btn_close {
-    color: #798d99;
-    height: 32px;
-    font-size: 16px;
-    line-height: 32px;
-    width: 32px;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    background: none;
-    color: #516b7a;
-    cursor: pointer;
-    &:hover {
-      color: #516b7a;
-    }
-  }
 }

@@ -4,10 +4,15 @@ import { connect } from 'react-redux';
 import Task from '../Task/Task';
 import { removeList } from '../../actions';
 import { addTask } from '../../actions';
+import Button from '../../UI/Button/Button';
+import Title from '../../UI/Title/Title';
+import TextArea from '../../UI/TextArea/TextArea';
+import { getBtnClasses } from '../../selectors/getBtnClasses';
+import { getTitleClasses } from '../../selectors/getTitleClasses';
 import './styles.scss';
 import '../Task/styles.scss';
 
-class Board extends Component {
+class BoardList extends Component {
 
   constructor(props) {
     super(props);
@@ -73,46 +78,48 @@ class Board extends Component {
     } = this.props;
 
     const { boardMenuShow, addTaskFormShow } = this.state;
-    let boardMenuShowOpen = boardMenuShow ? 'board__menu-toggle board__menu-toggle_open' : 'board__menu-toggle ';
-
     return (
       <div className="board boards__item">
         <ClickOutside
           className="clickOutSide"
           onClickOutside={this.boardMenuHide}
         >
-          <button 
-            className={boardMenuShowOpen} 
-            onClick={this.boardMenuToggle}
-          >
-            <span>...</span>
-          </button>
+          <Button 
+            classes={getBtnClasses('ellipsis')}
+            handleClick={this.boardMenuToggle}
+          />
 
           {boardMenuShow && (
             <div className="board-menu-wrapper">
-              <button 
-                className="board-menu-wrapper__close" 
-                onClick={this.boardMenuToggle}
+              <Button 
+                type="button" 
+                classes={getBtnClasses('close')}
+                handleClick={this.boardMenuToggle}
               >
-                ✕
-              </button>
-              <h2 className="board-menu-wrapper__title">Действие со списком</h2>
-
+                ✖
+              </Button>
+              <span className="board-menu-wrapper__title">Действие со списком</span>
               <ul className="board-menu">
                 <li className="board-menu__item">
-                  <button 
-                    type="button" 
-                    className="board-menu__link" 
-                    onClick={this.handleRemoveList}
+                  <Button 
+                    type="button"
+                    classes={getBtnClasses('long')}
+                    handleClick={this.handleRemoveList}
                   >
                     Архивировать список
-                  </button>
+                  </Button>
                 </li>
               </ul>
             </div>
           )}
         </ClickOutside>
-        <h2 className="board__title">{name}</h2>
+        <Title 
+          level="h3"
+          classes={getTitleClasses('middle')}
+          handleClick={()=> {}}
+        >
+          {name}
+        </Title>
 
         <div className="tasks tasks-wrapper">
           <div className="tasks-wrapper__inner">
@@ -133,35 +140,38 @@ class Board extends Component {
             onClickOutside={this.addTaskFormHide}
           >
             {!addTaskFormShow && (
-              <button 
-                className="task-adding__btn" 
-                onClick={this.addTaskFormToggle}
+              <Button 
+                type="button"
+                classes={getBtnClasses('link')}
+                handleClick={this.addTaskFormToggle}
               >
-                <span className="task-adding__btn_plus">+</span> 
-                <span className="task-adding__btn_text">Добавьте ещё одну карточку</span>
-              </button>
+                <span className="button__text">Добавьте ещё одну карточку</span>
+              </Button>
             )}
 
             {addTaskFormShow && (
               <form action="#" className="task-adding-form">
-                <textarea 
+                <TextArea 
                   onKeyPress={this.handleKeyPressAddTask} 
                   ref={this.addTaskTextArea} 
                   className="task-adding-form__input" 
                   placeholder="Ввести заголовок для этой карточки"
                 />
-                <button 
-                  className="task-adding-form__btn_add" 
-                  onClick={this.handleAddTask} 
+
+                <Button 
+                  type="button" 
+                  classes={getBtnClasses('primary')}
+                  handleClick={this.handleAddTask}
                 >
                   Добавьте карточку
-                </button>
-                <button 
-                  className="task-adding-form__btn_close" 
-                  onClick={this.addTaskFormToggle}
+                </Button>
+                <Button 
+                  type="button" 
+                  classes={getBtnClasses('close')}
+                  handleClick={this.addTaskFormToggle}
                 >
                   ✖
-                </button>
+                </Button>
               </form>
             )}
           </ClickOutside>
@@ -200,4 +210,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Board)
+)(BoardList)

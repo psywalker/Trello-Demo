@@ -10,31 +10,10 @@
     font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
   }
 
-  &__menu-toggle {
+  & .button_type_ellipsis {
     position: absolute;
-    right: 4px;
-    top: 4px;
-    background: none;
-    border-radius: 3px;
-    color: #798d99;
-    height: 32px;
-    font-size: 16px;
-    line-height: 32px;
-    width: 32px;
-    border: none;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    & span {
-      display: flex;
-      justify-content: center;
-      margin-top: -8px;
-    }
-    &:hover, &.board__menu-toggle_open {
-      color: #516b7a;
-      text-decoration: none;    
-      background-color: rgba(9,45,66,.13);
-    }
+    top: 5px;
+    right: 10px;
   }
 }
 
@@ -48,38 +27,27 @@
   top: 50px;
   box-shadow: 0 8px 16px -4px rgba(9,45,66,.25),0 0 0 1px rgba(9,45,66,.08);
 
-  &__close {
-    text-align: center;
-    height: 20px;
-    font-size: 12px;
-    line-height: 0px;
-    width: 20px;
-    padding: 10px 12px 10px 6px;
+  & .button_type_close {
     position: absolute;
-    top: 10px;
+    top: 1px;
     right: 10px;
-    z-index: 2;
-    border: none;
-    background: none;
-
-    cursor: pointer;
-    &:hover {
-      color: #516b7a;
-    }
   }
-  
+
   &__title {
-    height: 40px;
-    position: relative;
-    margin: 0 10px;
-    margin-bottom: 8px;
     text-align: center;
+    box-sizing: border-box;
     color: #6b808c;
     display: block;
     line-height: 40px;
     border-bottom: 1px solid rgba(9,45,66,.13);
+    margin: 0 30px 0 0;
+    overflow: hidden;
+    padding: 10px 0;
+    position: relative;
+    text-overflow: ellipsis;
     font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
     font-size: 14px;
+    line-height: 20px;
     font-weight: 400;
   }
 }
@@ -116,31 +84,6 @@
 
 .task-adding {
   position: relative;
-  &__btn {
-    text-align: left;
-    background: none;
-    cursor: pointer;
-    color: #6b808c;
-    font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    border-radius: 3px;
-    height: auto;
-    min-height: 32px;
-    padding: 10px 0px 10px 8px;
-    border: none;
-    width: calc(100% + 16px);
-    margin-left: -8px;
-    box-sizing: border-box;
-    &:hover {
-      color: #17394d;
-      background-color: rgba(9,45,66,.13);
-    }
-    &:hover .task-adding__btn_text {
-      border-bottom: 1px solid #17394d;
-    }
-  }
 }
 
 .task-adding-form {
@@ -152,6 +95,7 @@
   border-radius: 3px;
   height: auto;
   min-height: 32px;
+  padding: 10px 0;
   &__input {
     background: #fff;
     border: none;
@@ -194,23 +138,6 @@
       box-shadow: 0 1px 0 0 #3f6f21;
       border: none;
       color: #fff;
-    }
-  }
-
-  &__btn_close {
-    color: #798d99;
-    height: 32px;
-    font-size: 16px;
-    line-height: 32px;
-    width: 32px;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    background: none;
-    color: #516b7a;
-    cursor: pointer;
-    &:hover {
-      color: #516b7a;
     }
   }
 }

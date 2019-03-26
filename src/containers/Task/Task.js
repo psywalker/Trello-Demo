@@ -3,6 +3,11 @@ import ClickOutside from 'react-click-outside';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { removeTask } from '../../actions';
+import Button from '../../UI/Button/Button';
+import Title from '../../UI/Title/Title';
+import { getTitleClasses } from '../../selectors/getTitleClasses';
+import TextArea from '../../UI/TextArea/TextArea';
+import { getBtnClasses } from '../../selectors/getBtnClasses';
 import './styles.scss';
 
 class Task extends Component {
@@ -50,21 +55,22 @@ class Task extends Component {
     const { id, text } = this.props;
     const { taskEditBtnShow } = this.state;
 
-    let isTaskEditBtnShow = taskEditBtnShow ? 'task__edit-btn task__edit-btn_show' : 'task__edit-btn ';
-
     return (
       <div className="task" ref={this.taskContainer}>
-        <button 
-          className={isTaskEditBtnShow} 
-          onClick={this.taskMenuToggle}
+        <Button 
+          type="button" 
+          classes={getBtnClasses('visible')}
+          handleClick={this.taskMenuToggle}
         >
-          <span>
-            <i className="fas fa-pen" />
-          </span>
-        </button>
-        
-        <h2 className="task__title">{id}: {text}</h2>
-
+          <i className="fas fa-pen" />
+        </Button>
+        <Title 
+          level="h3"
+          classes={getTitleClasses('middle')}
+          handleClick={()=> {}}
+        >
+          {id}: {text}
+        </Title>
         <ClickOutside 
           className="clickOutSide" 
           onClickOutside={this.taskMenuHide}
@@ -87,20 +93,29 @@ class Task extends Component {
                     className="task-menu-fields__textarea" 
                     ref={this.taskMenuTextArea} 
                   />
-                  <button 
-                    className="task-menu-fields__btn" 
-                    onClick={this.handleEditTask}
+                  <TextArea 
+                    className="task-menu-fields__textarea" 
+                    ref={this.taskMenuTextArea} 
+                  />
+                  <Button 
+                    type="button" 
+                    classes={getBtnClasses('primary')}
+                    handleClick={this.handleEditTask}
                   >
                     Сохранить
-                  </button>
+                  </Button>
                 </form>
 
                 <ul className="task-menu">
                   <li className="task-menu__item">
-                    <button className="task-menu__btn" onClick={this.handleRemoveTask}>
-                      <i className="far fa-file-archive" />
+                    <Button 
+                      type="button" 
+                      classes={getBtnClasses('dark')}
+                      handleClick={this.handleRemoveTask}
+                    >
+                      <i className="far fa-file-archive button__icon" />
                       Архивировать
-                    </button>
+                    </Button>
                   </li>
                 </ul>
               </div>
