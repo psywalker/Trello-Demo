@@ -1,8 +1,10 @@
-let nextListId = 3
+import uuidv4 from 'uuid/v4';
+//let nextListId = uuidv4();
+//let counterTaskId = uuidv4();
 
 export const addList = text => ({
   type: 'ADD_LIST',
-  id: nextListId++,
+  id: uuidv4(),
   text,
 })
 
@@ -14,6 +16,7 @@ export const removeList = id => ({
 export const addTask = (id, text) => ({
   type: 'ADD_TASK',
   listId: id,
+  nextTaskId: uuidv4(),
   text,
 })
 

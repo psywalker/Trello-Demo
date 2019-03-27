@@ -44,10 +44,10 @@ class Board extends Component {
       <div className="boards-wrapper">
 
         <div className="boards"> 
-          {lists.map(({id}) =>
+          {lists.map((list) =>
             <BoardList
-              listId={id} 
-              key={id} 
+              listId={list.id} 
+              key={list.id} 
             />
           )}
         </div>
@@ -89,7 +89,13 @@ class Board extends Component {
 
 const mapStateToProps = (state) => 
 {
-  return { lists: state.lists };
+  let listArr = [];
+  let lists = state.lists;
+
+  for(let i in lists) {
+    listArr[i] = lists[i];
+  }
+  return { lists: listArr };
 }
 
 const mapDispatchToProps = ({

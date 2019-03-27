@@ -59,6 +59,8 @@ class BoardList extends Component {
 
   handleRemoveList = (e) => {
     const {listId, removeList } = this.props;
+
+    console.log('1: ', listId, removeList)
     e.preventDefault();
     removeList(listId);
   }
@@ -122,11 +124,11 @@ class BoardList extends Component {
 
         <div className="tasks tasks-wrapper">
           <div className="tasks-wrapper__inner">
-            {tasks.map(({id, text}) => {
+            {tasks.map(task => {
               return <Task 
-                key={id} 
-                text={text} 
-                id={id} 
+                key={task.id} 
+                text={task.text} 
+                id={task.id} 
                 listId={listId} 
               />
             })}
@@ -183,8 +185,21 @@ class BoardList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => 
-{
-  const list = state.lists.filter((list, i) => {
+{  
+  let list = state.lists[ownProps.listId];
+  let stateTasks = state.tasks;
+  let tasksArr = list.tasksId;
+  let name = list.name;
+  let tasks = []
+  let listId = list.id
+  for(let i = 0; i < tasksArr.length; i++) {
+
+    tasks[i] = stateTasks[tasksArr[i]];
+  }
+
+
+  return { tasks, name, listId };
+  /*const list = state.lists.filter((list, i) => {
     return ownProps.listId === list.id;
   })
 
@@ -200,6 +215,9 @@ const mapStateToProps = (state, ownProps) =>
   })
 
   return { tasks, name, listId };
+  */
+
+
     
 }
 

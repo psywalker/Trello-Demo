@@ -126,7 +126,7 @@ class Task extends Component {
 const mapStateToProps = (state, ownProps) => 
 {
   const taskId = _.get(ownProps, ['match', 'params', 'id']) || ownProps.id;
-  const taskText = _.get(state, ['tasks', `${taskId-1}`, 'text']);
+  const taskText = _.get(state, ['tasks', `${taskId}`, 'text']);
 
   return { 
     id: taskId, 
