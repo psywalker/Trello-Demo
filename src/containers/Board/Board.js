@@ -30,7 +30,9 @@ class Board extends Component {
   }
 
   handleAddList = (e) => {
+    
     const { addList } = this.props;
+
     addList(this.listTitleInput.current.value);
     this.openFormAddList(e);
   }  
@@ -89,11 +91,11 @@ class Board extends Component {
 
 const mapStateToProps = (state) => 
 {
+  
+  let lists = Object.entries(state.lists)
   let listArr = [];
-  let lists = state.lists;
-
-  for(let i in lists) {
-    listArr[i] = lists[i];
+  for(let i = 0; i < lists.length; i++) {
+    listArr[i] = lists[i][1];
   }
   return { lists: listArr };
 }

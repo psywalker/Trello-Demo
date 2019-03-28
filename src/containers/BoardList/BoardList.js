@@ -60,7 +60,6 @@ class BoardList extends Component {
   handleRemoveList = (e) => {
     const {listId, removeList } = this.props;
 
-    console.log('1: ', listId, removeList)
     e.preventDefault();
     removeList(listId);
   }

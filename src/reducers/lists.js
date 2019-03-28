@@ -2,7 +2,6 @@
 const lists = (state = [], action) => {
   switch (action.type) {
     case 'ADD_LIST':
-
       return {
         ...state,
         [action.id]: {
@@ -14,7 +13,7 @@ const lists = (state = [], action) => {
     case 'REMOVE_LIST':
       //return state.filter(list => list.id !== action.id);
       return Object.entries(state).reduce((obj, [key, value]) => { 
-        if(key != action.id) obj[key] = state[key];
+        if(String(key) !== String(action.id)) obj[key] = state[key];
         return obj;
       }, {})
     case 'ADD_TASK':
