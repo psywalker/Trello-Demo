@@ -1,4 +1,5 @@
 
+import { omit } from 'lodash'
 const lists = (state = [], action) => {
   switch (action.type) {
     case 'ADD_LIST':
@@ -11,11 +12,8 @@ const lists = (state = [], action) => {
         },
       };
     case 'REMOVE_LIST':
-      //return state.filter(list => list.id !== action.id);
-      return Object.entries(state).reduce((obj, [key, value]) => { 
-        if(String(key) !== String(action.id)) obj[key] = state[key];
-        return obj;
-      }, {})
+      let removeListId = action.id;
+      return omit(state, [removeListId]);
     case 'ADD_TASK':
 
       let list = state[action.listId];
@@ -33,12 +31,6 @@ const lists = (state = [], action) => {
         ...state,
         [action.listId]: { ...removeList, tasksId: newListTasksId },
       };
-
-      /*return state.map(list =>
-        (list.id === action.listId) 
-        ? {...list, tasksId: list.tasksId.filter(task => task !== action.taskId)} 
-        : list                                                                                                             
-      )*/
 
     default:
       return state;

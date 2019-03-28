@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
-import _ from 'lodash';
+import { get } from 'lodash'
 import { connect } from 'react-redux';
 import { removeTask } from '../../actions';
 import Button from '../../UI/Button/Button';
@@ -127,8 +127,8 @@ class Task extends Component {
 
 const mapStateToProps = (state, ownProps) => 
 {
-  const taskId = _.get(ownProps, ['match', 'params', 'id']) || ownProps.id;
-  const taskText = _.get(state, ['tasks', `${taskId}`, 'text']);
+  const taskId = get(ownProps, ['match', 'params', 'id']) || ownProps.id;
+  const taskText = get(state, ['tasks', `${taskId}`, 'text']);
 
   return { 
     id: taskId, 
