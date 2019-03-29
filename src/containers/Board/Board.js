@@ -91,13 +91,8 @@ class Board extends Component {
 
 const mapStateToProps = (state) => 
 {
-  
-  let lists = Object.entries(state.lists)
-  let listArr = [];
-  for(let i = 0; i < lists.length; i++) {
-    listArr[i] = lists[i][1];
-  }
-  return { lists: listArr };
+  const lists = Object.values(state.lists)
+  return { lists };
 }
 
 const mapDispatchToProps = ({

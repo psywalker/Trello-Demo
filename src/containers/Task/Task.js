@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
-import { get } from 'lodash'
 import { connect } from 'react-redux';
 import { removeTask } from '../../actions';
 import Button from '../../UI/Button/Button';
@@ -8,6 +7,7 @@ import Title from '../../UI/Title/Title';
 import { getTitleClasses } from '../../selectors/getTitleClasses';
 import TextArea from '../../UI/TextArea/TextArea';
 import { getBtnClasses } from '../../selectors/getBtnClasses';
+import { getDataTask } from '../../selectors/getDataTask';
 import './styles.scss';
 
 class Task extends Component {
@@ -127,14 +127,8 @@ class Task extends Component {
 
 const mapStateToProps = (state, ownProps) => 
 {
-  const taskId = get(ownProps, ['match', 'params', 'id']) || ownProps.id;
-  const taskText = get(state, ['tasks', `${taskId}`, 'text']);
-
-  return { 
-    id: taskId, 
-    text: taskText
-  };
-    
+  const getDataTaskObj = getDataTask(state, ownProps);
+  return getDataTaskObj;
 }
 
 const mapDispatchToProps = ({

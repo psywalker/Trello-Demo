@@ -1,5 +1,5 @@
 
-import { omit } from 'lodash'
+import omit from 'lodash/omit'
 const lists = (state = [], action) => {
   switch (action.type) {
     case 'ADD_LIST':
@@ -12,7 +12,7 @@ const lists = (state = [], action) => {
         },
       };
     case 'REMOVE_LIST':
-      let removeListId = action.id;
+      const removeListId = action.id;
       return omit(state, [removeListId]);
     case 'ADD_TASK':
 

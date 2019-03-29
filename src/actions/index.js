@@ -1,6 +1,4 @@
 import uuidv4 from 'uuid/v4';
-//let nextListId = uuidv4();
-//let counterTaskId = uuidv4();
 
 export const addList = text => ({
   type: 'ADD_LIST',

@@ -9,6 +9,7 @@ import Title from '../../UI/Title/Title';
 import TextArea from '../../UI/TextArea/TextArea';
 import { getBtnClasses } from '../../selectors/getBtnClasses';
 import { getTitleClasses } from '../../selectors/getTitleClasses';
+import { getTasks } from '../../selectors/getTasks';
 import './styles.scss';
 import '../Task/styles.scss';
 
@@ -183,41 +184,9 @@ class BoardList extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => 
-{  
-  let list = state.lists[ownProps.listId];
-  let stateTasks = state.tasks;
-  let tasksArr = list.tasksId;
-  let name = list.name;
-  let tasks = []
-  let listId = list.id
-  for(let i = 0; i < tasksArr.length; i++) {
-
-    tasks[i] = stateTasks[tasksArr[i]];
-  }
-
-
-  return { tasks, name, listId };
-  /*const list = state.lists.filter((list, i) => {
-    return ownProps.listId === list.id;
-  })
-
-  const name = list[0].name;
-  const listsIds = list[0].tasksId;
-  const listId = list[0].id;
-  const tasksArr = state.tasks;
-  const tasks = listsIds.map(id => {
-    for(let i = 0; i < tasksArr.length; i++) {
-      if(id === tasksArr[i].id) return tasksArr[i];
-    }
-    return false;
-  })
-
-  return { tasks, name, listId };
-  */
-
-
-    
+const mapStateToProps = (state, ownProps) => {
+  const getTasksObj = getTasks(state, ownProps);
+  return getTasksObj;
 }
 
 const mapDispatchToProps = ({
