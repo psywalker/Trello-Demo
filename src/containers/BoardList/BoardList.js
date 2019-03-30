@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
 import { connect } from 'react-redux';
-import Task from '../Task/Task';
 import { removeList } from '../../actions';
 import { addTask } from '../../actions';
 import Button from '../../UI/Button/Button';
@@ -10,6 +9,7 @@ import TextArea from '../../UI/TextArea/TextArea';
 import { getBtnClasses } from '../../selectors/getBtnClasses';
 import { getTitleClasses } from '../../selectors/getTitleClasses';
 import { getTasks } from '../../selectors/getTasks';
+import { getTaskArray } from '../../selectors/getTaskArray';
 import './styles.scss';
 import '../Task/styles.scss';
 
@@ -124,14 +124,7 @@ class BoardList extends Component {
 
         <div className="tasks tasks-wrapper">
           <div className="tasks-wrapper__inner">
-            {tasks.map(task => {
-              return <Task 
-                key={task.id} 
-                text={task.text} 
-                id={task.id} 
-                listId={listId} 
-              />
-            })}
+            {getTaskArray(tasks, listId)}
           </div>
         </div>
 

@@ -68,9 +68,9 @@ class Task extends Component {
           level="h3"
           classes={getTitleClasses('middle')}
         >
-          id: {id} 
+          <span style={{color: 'red'}}>id:</span> {id} 
           <br/>
-          text: {text}
+          <span style={{color: 'red'}}>text:</span> {text}
         </Title>
         <ClickOutside 
           className="clickOutSide" 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BoardList from '../BoardList/BoardList';
 import Button from '../../UI/Button/Button';
 import { addList } from '../../actions';
 import { getBtnClasses } from '../../selectors/getBtnClasses';
+import { getBoardListArray } from '../../selectors/getBoardListArray';
 import './styles.scss';
 
 class Board extends Component {
@@ -46,12 +46,7 @@ class Board extends Component {
       <div className="boards-wrapper">
 
         <div className="boards"> 
-          {lists.map((list) =>
-            <BoardList
-              listId={list.id} 
-              key={list.id} 
-            />
-          )}
+          {getBoardListArray(lists)}
         </div>
     
         <div className="board-adding">
