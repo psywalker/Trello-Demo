@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '../../UI/Button/Button';
+import BoardAddForm from './BoartAddForm/BoardAddForm';
 import { addList } from '../../actions';
-import { getBtnClasses } from '../../selectors/getBtnClasses';
 import { getBoardListArray } from '../../selectors/getBoardListArray';
 import './styles.scss';
 
@@ -13,28 +13,21 @@ class Board extends Component {
     this.state = {
       addListForm: false,
     }
-    this.listTitleInput = React.createRef();
   } 
-  componentDidUpdate() {
-    if (!this.listTitleInput.current) return;
-    this.listTitleInput.current.focus();
-  }
 
-  openFormAddList = (e) => {
-    
-    e.preventDefault();
+  openFormAddList = () => {
+
     this.setState({
       addListForm: !this.state.addListForm,
     }); 
-    return false;
   }
 
-  handleAddList = (e) => {
+  handleAddList = (value) => {
     
     const { addList } = this.props;
 
-    addList(this.listTitleInput.current.value);
-    this.openFormAddList(e);
+    addList(value);
+    this.openFormAddList();
   }  
 
   render() {
@@ -56,26 +49,10 @@ class Board extends Component {
             </Button>
           )}
           {addListForm && (
-            <form className="board-adding-form">
-              <input 
-                ref={this.listTitleInput} 
-                className="board-adding-form__input" 
-                placeholder="Ввести заголовок списка" 
-              />
-              <Button 
-                onClick={this.handleAddList}
-                className={getBtnClasses('primary')}
-              >
-                Добавьте список
-              </Button>
-
-              <Button 
-                className={getBtnClasses('close')}
-                onClick={this.openFormAddList}
-              >
-                ✖
-              </Button>
-            </form>
+            <BoardAddForm 
+              openFormAddList={this.openFormAddList}
+              handleAddList={this.handleAddList}
+            />
           )}
         </div>
       </div>
@@ -83,9 +60,7 @@ class Board extends Component {
   }
 }
 
-
-const mapStateToProps = (state) => 
-{
+const mapStateToProps = (state) => {
   const lists = Object.values(state.lists)
   return { lists };
 }

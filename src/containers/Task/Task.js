@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
 import { connect } from 'react-redux';
 import { removeTask } from '../../actions';
+import TaskSaveForm from './TaskSaveForm/TaskSaveForm';
 import Button from '../../UI/Button/Button';
 import Title from '../../UI/Title/Title';
 import { getTitleClasses } from '../../selectors/getTitleClasses';
-import TextArea from '../../UI/TextArea/TextArea';
 import { getBtnClasses } from '../../selectors/getBtnClasses';
 import { getDataTask } from '../../selectors/getDataTask';
 import './styles.scss';
@@ -20,13 +20,10 @@ class Task extends Component {
 
     this.taskContainer = React.createRef();
     this.taskMenuWrapper = React.createRef();
-    this.taskMenuTextArea = React.createRef();
-    
   } 
 
   componentDidUpdate() {
-    if (!this.taskMenuTextArea.current && !this.taskMenuWrapper.current) return;
-    this.taskMenuTextArea.current.focus();
+    if (!this.taskMenuWrapper.current) return;
     const top = this.taskContainer.current.getBoundingClientRect().y;
     this.taskMenuWrapper.current.style.top = top + 'px';
   }
@@ -39,10 +36,6 @@ class Task extends Component {
     this.setState({ taskEditBtnShow: !taskEditBtnShow });
   };
   
-  handleEditTask = (e) => {
-    e.preventDefault();
-  };
-
   handleRemoveTask = (e) => {
     e.preventDefault();
     const { id, listId, removeTask } = this.props;
@@ -89,19 +82,7 @@ class Task extends Component {
 
               <div className="task-menu-wrapper__inner">
 
-                <form action="#" className="task-menu-fields">
-                  <TextArea 
-                    className="task-menu-fields__textarea" 
-                    ref={this.taskMenuTextArea} 
-                  />
-                  <Button 
-                    type="button" 
-                    className={getBtnClasses('primary')}
-                    onClick={this.handleEditTask}
-                  >
-                    Сохранить
-                  </Button>
-                </form>
+                <TaskSaveForm />
 
                 <ul className="task-menu">
                   <li className="task-menu__item">

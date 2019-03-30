@@ -3,9 +3,9 @@ import ClickOutside from 'react-click-outside';
 import { connect } from 'react-redux';
 import { removeList } from '../../actions';
 import { addTask } from '../../actions';
+import TaskAddForm from './TaskAddForm/TaskAddForm';
 import Button from '../../UI/Button/Button';
 import Title from '../../UI/Title/Title';
-import TextArea from '../../UI/TextArea/TextArea';
 import { getBtnClasses } from '../../selectors/getBtnClasses';
 import { getTitleClasses } from '../../selectors/getTitleClasses';
 import { getTasks } from '../../selectors/getTasks';
@@ -21,14 +21,8 @@ class BoardList extends Component {
       boardMenuShow: false,
       addTaskFormShow: false,
     }
-
-    this.addTaskTextArea = React.createRef();
-
   }
-  componentDidUpdate() {
-    if (!this.addTaskTextArea.current) return;
-    this.addTaskTextArea.current.focus();
-  }
+
   boardMenuHide = () => {
     this.setState({ boardMenuShow: false });
   };
@@ -38,24 +32,13 @@ class BoardList extends Component {
     this.setState({ boardMenuShow: !boardMenuShow });
   };
 
-  addTaskFormHide = (e) => {
-    e.preventDefault();
+  addTaskFormHide = () => {
     this.setState({ addTaskFormShow: false });
   };
 
   addTaskFormToggle = () => {
     const { addTaskFormShow } = this.state;
     this.setState({ addTaskFormShow: !addTaskFormShow });
-  };
-
-  handleKeyPressAddTask = (e) => {
-    const { listId, addTask } = this.props;
-
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      addTask(listId, this.addTaskTextArea.current.value);
-      this.setState({ addTaskFormShow: false });
-    }
   };
 
   handleRemoveList = (e) => {
@@ -65,10 +48,10 @@ class BoardList extends Component {
     removeList(listId);
   }
 
-  handleAddTask = (e) => {
+  handleAddTask = (value) => {
     const {listId, addTask } = this.props;
-    this.addTaskFormHide(e);
-    addTask(listId, this.addTaskTextArea.current.value);
+    addTask(listId, value);
+    this.addTaskFormHide();
   }
 
   render() {
@@ -146,29 +129,10 @@ class BoardList extends Component {
             )}
 
             {addTaskFormShow && (
-              <form action="#" className="task-adding-form">
-                <TextArea 
-                  onKeyPress={this.handleKeyPressAddTask} 
-                  ref={this.addTaskTextArea} 
-                  className="task-adding-form__input" 
-                  placeholder="Ввести заголовок для этой карточки"
-                />
-
-                <Button 
-                  type="button" 
-                  className={getBtnClasses('primary')}
-                  onClick={this.handleAddTask}
-                >
-                  Добавьте карточку
-                </Button>
-                <Button 
-                  type="button" 
-                  className={getBtnClasses('close')}
-                  onClick={this.addTaskFormToggle}
-                >
-                  ✖
-                </Button>
-              </form>
+              <TaskAddForm 
+                addTaskFormToggle={this.addTaskFormToggle}
+                handleAddTask={this.handleAddTask}
+              />
             )}
           </ClickOutside>
         </div>
