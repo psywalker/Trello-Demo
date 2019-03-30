@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
-import Button from '../../../UI/Button/Button';
-import { getBtnClasses } from '../../../selectors/getBtnClasses';
+import Button from 'UI/Button/Button';
+import { getBtnClasses } from 'selectors/getBtnClasses';
 import './styles.scss';
 
 class TaskAddForm extends Component {

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
 import { connect } from 'react-redux';
-import { removeTask } from '../../actions';
+import { removeTask } from 'actions';
 import TaskSaveForm from './TaskSaveForm/TaskSaveForm';
-import Button from '../../UI/Button/Button';
-import Title from '../../UI/Title/Title';
-import { getTitleClasses } from '../../selectors/getTitleClasses';
-import { getBtnClasses } from '../../selectors/getBtnClasses';
-import { getDataTask } from '../../selectors/getDataTask';
+import Button from 'UI/Button/Button';
+import Title from 'UI/Title/Title';
+import { getTitleClasses } from 'selectors/getTitleClasses';
+import { getBtnClasses } from 'selectors/getBtnClasses';
+import { getDataTask } from 'selectors/getDataTask';
 import './styles.scss';
 
 class Task extends Component {

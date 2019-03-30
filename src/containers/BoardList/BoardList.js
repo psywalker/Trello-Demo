@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import ClickOutside from 'react-click-outside';
 import { connect } from 'react-redux';
-import { removeList } from '../../actions';
-import { addTask } from '../../actions';
+import { removeList, addTask } from 'actions';
 import TaskAddForm from './TaskAddForm/TaskAddForm';
-import Button from '../../UI/Button/Button';
-import Title from '../../UI/Title/Title';
-import { getBtnClasses } from '../../selectors/getBtnClasses';
-import { getTitleClasses } from '../../selectors/getTitleClasses';
-import { getTasks } from '../../selectors/getTasks';
-import { getTaskArray } from '../../selectors/getTaskArray';
+import Button from 'UI/Button/Button';
+import Title from 'UI/Title/Title';
+import { getBtnClasses } from 'selectors/getBtnClasses';
+import { getTitleClasses } from 'selectors/getTitleClasses';
+import { getTasks } from 'selectors/getTasks';
+import { getTaskArray } from 'selectors/getTaskArray';
 import './styles.scss';
-import '../Task/styles.scss';
 
 class BoardList extends Component {
 

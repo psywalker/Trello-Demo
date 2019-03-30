@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Button from '../../UI/Button/Button';
+import Button from 'UI/Button/Button';
 import BoardAddForm from './BoartAddForm/BoardAddForm';
-import { addList } from '../../actions';
-import { getBoardListArray } from '../../selectors/getBoardListArray';
+import { addList } from 'actions';
+import { getBoardListArray } from 'selectors/getBoardListArray';
 import './styles.scss';
 
 class Board extends Component {
