@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from 'UI/Button/Button';
 import { getBtnClasses } from 'selectors/getBtnClasses';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 class TaskSaveForm extends Component {
 
@@ -16,18 +16,18 @@ class TaskSaveForm extends Component {
       <Form
         onSubmit={this.onSubmit}
         render={({ handleSubmit, invalid, pristine }) => (
-          <form action="#" onSubmit={handleSubmit} className="task-menu-fields">
+          <form action="#" onSubmit={handleSubmit} className={styles.form}>
             <Field 
               autoFocus
               name="title"
               component="textarea"
-              className="textarea" 
+              className={styles.textArea}
               placeholder="Ввести текст"
             />
 
             <Button 
               type="submit" 
-              className={getBtnClasses('primary')}
+              className={`${styles.button} ${getBtnClasses('primary')}`}
               onClick={handleSubmit}
               disabled={pristine || invalid}
             >

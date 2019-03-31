@@ -1,0 +1,53 @@
+.taskContainer {
+  position: relative;
+  height: 200px;
+  background: #fff;
+  border-radius: 3px;
+  margin: 0px 0 8px;
+  padding: 10px 5px;
+
+  & .taskContainerButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    visibility: hidden;
+  }
+
+  &:hover .taskContainerButton {
+    visibility: visible;
+  }
+}
+
+.taskMenuContainer {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+}
+.taskMenuContainerInner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  width: 460px;
+}
+.fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  background: rgba(0,0,0,.6);
+}
+
+.taskMenu {
+  align-self: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.taskMenuItem {
+  margin-left: 6px;
+}

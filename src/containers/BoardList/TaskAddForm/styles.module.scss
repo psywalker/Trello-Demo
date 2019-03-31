@@ -1,10 +1,15 @@
-.board-adding-form {
+.form {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
   background-color: #dfe3e6;
   border-radius: 3px;
   height: auto;
   min-height: 32px;
-  padding: 4px;
-  & input {
+  padding: 10px 0;
+
+  & .textarea {
     background: #fff;
     border: none;
     box-shadow: inset 0 0 0 2px #0079bf;

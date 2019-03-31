@@ -4,7 +4,8 @@ import Button from 'UI/Button/Button';
 import BoardAddForm from './BoartAddForm/BoardAddForm';
 import { addList } from 'actions';
 import { getBoardListArray } from 'selectors/getBoardListArray';
-import './styles.scss';
+import styles from './styles.module.scss';
+
 
 class Board extends Component {
 
@@ -36,13 +37,13 @@ class Board extends Component {
     const { addListForm } = this.state;
 
     return (
-      <div className="boards-wrapper">
+      <div className={styles.container}>
 
-        <div className="boards"> 
+        <div className={styles.boards}> 
           {getBoardListArray(lists)}
         </div>
     
-        <div className="board-adding">
+        <div>
           {!addListForm && (
             <Button onClick={this.openFormAddList}>
               + Добавьте ещё одну колонку

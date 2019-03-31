@@ -9,7 +9,7 @@ import { getBtnClasses } from 'selectors/getBtnClasses';
 import { getTitleClasses } from 'selectors/getTitleClasses';
 import { getTasks } from 'selectors/getTasks';
 import { getTaskArray } from 'selectors/getTaskArray';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 class BoardList extends Component {
 
@@ -62,31 +62,36 @@ class BoardList extends Component {
 
     const { boardMenuShow, addTaskFormShow } = this.state;
     return (
-      <div className="board boards__item">
+      <div className={styles.boardItem}>
         <ClickOutside
           className="clickOutSide"
           onClickOutside={this.boardMenuHide}
         >
           <Button 
-            className={getBtnClasses('ellipsis')}
+            className={`${styles.boardItemBtn} ${getBtnClasses('ellipsis')}`}
             onClick={this.boardMenuToggle}
           />
 
           {boardMenuShow && (
-            <div className="board-menu-wrapper">
+            <div className={styles.boardMenuContainer}>
+
               <Button 
                 type="button" 
-                className={getBtnClasses('close')}
+                className={`${styles.boardMenuContainerBtn} ${getBtnClasses('close')}`}
                 onClick={this.boardMenuToggle}
               >
                 ✖
               </Button>
-              <span className="board-menu-wrapper__title">Действие со списком</span>
-              <ul className="board-menu">
-                <li className="board-menu__item">
+              <span 
+                className={styles.boardMenuContainerTitle}
+              >
+                Действие со списком
+              </span>
+              <ul className={styles.boardMenu}>
+                <li>
                   <Button 
                     type="button"
-                    className={getBtnClasses('long')}
+                    className={`${styles.boardMenuItemBtn} ${getBtnClasses('long')}`}
                     onClick={this.handleRemoveList}
                   >
                     Архивировать список
@@ -103,13 +108,13 @@ class BoardList extends Component {
           {name}
         </Title>
 
-        <div className="tasks tasks-wrapper">
-          <div className="tasks-wrapper__inner">
-            {getTaskArray(tasks, listId)}
-          </div>
+        
+        <div className={styles.tasksContainer}>
+          {getTaskArray(tasks, listId)}
         </div>
+        
 
-        <div className="task-adding">
+        <div className={styles.taskFormContainer}>
           <ClickOutside 
             className="clickOutSide" 
             onClickOutside={this.addTaskFormHide}

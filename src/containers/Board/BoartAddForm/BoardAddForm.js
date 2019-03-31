@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from 'UI/Button/Button';
 import { getBtnClasses } from 'selectors/getBtnClasses';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 class BoardAddForm extends Component {
 
@@ -19,13 +19,14 @@ class BoardAddForm extends Component {
       <Form
         onSubmit={this.onSubmit}
         render={({ handleSubmit, invalid, pristine }) => (
-          <form onSubmit={handleSubmit} className="board-adding-form">
+          <form onSubmit={handleSubmit}  className={styles.form}>
             <Field
               autoFocus
               name="title"
               component="input"
               type="text"
               placeholder="Ввести заголовок списка"
+              className={styles.input}
             />
 
             <Button 

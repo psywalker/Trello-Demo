@@ -8,7 +8,7 @@ import Title from 'UI/Title/Title';
 import { getTitleClasses } from 'selectors/getTitleClasses';
 import { getBtnClasses } from 'selectors/getBtnClasses';
 import { getDataTask } from 'selectors/getDataTask';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 class Task extends Component {
 
@@ -49,17 +49,17 @@ class Task extends Component {
     const { taskEditBtnShow } = this.state;
 
     return (
-      <div className="task" ref={this.taskContainer}>
+      <div className={styles.taskContainer} ref={this.taskContainer}>
         <Button 
           type="button" 
-          className={getBtnClasses('visible')}
+          className={`${styles.taskContainerButton} ${getBtnClasses('visible')}`}
           onClick={this.taskMenuToggle}
         >
           <i className="fas fa-pen" />
         </Button>
         <Title 
           level="h3"
-          classes={getTitleClasses('middle')}
+          classes={`${styles.taskTitle} ${getTitleClasses('middle')}`}
         >
           <span style={{color: 'red'}}>id:</span> {id} 
           <br/>
@@ -71,21 +71,21 @@ class Task extends Component {
         >
           {taskEditBtnShow && (
             <div 
-              className="task-menu-wrapper" 
+              className={styles.taskMenuContainer} 
               ref={this.taskMenuWrapper}
             >
 
               <div 
-                className="task-menu-wrapper__fade" 
+                className={styles.fade} 
                 onClick={this.taskMenuToggle} 
               />
 
-              <div className="task-menu-wrapper__inner">
+              <div className={styles.taskMenuContainerInner}>
 
                 <TaskSaveForm />
 
-                <ul className="task-menu">
-                  <li className="task-menu__item">
+                <ul className={styles.taskMenu}>
+                  <li className={styles.taskMenuItem}>
                     <Button 
                       type="button" 
                       className={getBtnClasses('dark')}

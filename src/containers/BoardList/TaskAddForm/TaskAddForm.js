@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import Button from 'UI/Button/Button';
 import { getBtnClasses } from 'selectors/getBtnClasses';
-import './styles.scss';
+import styles from './styles.module.scss';
 
 class TaskAddForm extends Component {
 
@@ -19,12 +19,16 @@ class TaskAddForm extends Component {
       <Form
         onSubmit={this.onSubmit}
         render={({ handleSubmit, invalid, pristine }) => (
-          <form action="#" onSubmit={handleSubmit} className="task-adding-form">
+          <form 
+            action="#" 
+            onSubmit={handleSubmit} 
+            className={styles.form}
+          >
             <Field 
               autoFocus
               name="title"
               component="textarea"
-              className="task-adding-form__input" 
+              className={styles.textarea}
               placeholder="Ввести заголовок для этой карточки"
             />
 
