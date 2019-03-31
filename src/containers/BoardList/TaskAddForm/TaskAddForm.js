@@ -35,7 +35,6 @@ class TaskAddForm extends Component {
             <Button 
               type="submit" 
               className={getBtnClasses('primary')}
-              onClick={handleSubmit}
               disabled={pristine || invalid}
             >
               Добавьте карточку

@@ -28,7 +28,6 @@ class TaskSaveForm extends Component {
             <Button 
               type="submit" 
               className={`${styles.button} ${getBtnClasses('primary')}`}
-              onClick={handleSubmit}
               disabled={pristine || invalid}
             >
               Сохранить

@@ -11,6 +11,7 @@ class BoardAddForm extends Component {
     handleAddList(values.title)
   }
 
+
   render() {
 
     const { openFormAddList } = this.props;
@@ -30,7 +31,6 @@ class BoardAddForm extends Component {
             />
 
             <Button 
-              onClick={handleSubmit}
               className={getBtnClasses('primary')}
               type="submit"
               disabled={pristine || invalid}
